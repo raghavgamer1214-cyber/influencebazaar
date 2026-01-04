@@ -1,0 +1,1485 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Influence_Bazaar - Premier Digital Marketing Agency in Delhi</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #F5EFE7 0%, #F5F1EB 100%);
+      color: #000000;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #1A1A1A;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.2s ease, opacity 0.3s ease;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(216, 201, 166, 0.3) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+      filter: blur(20px);
+    }
+
+    /* Particle Background */
+    .particle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(216, 201, 166, 0.4);
+      border-radius: 50%;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100%) translateX(0) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100%) translateX(100px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Sticky Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(245, 239, 231, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 1.2rem 4rem;
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.05);
+      transition: padding 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 0.8rem 4rem;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1A1A1A;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #1A1A1A;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #D8C9A6;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #4A4A4A;
+    }
+
+    .nav-cta {
+      background: #1A1A1A;
+      color: #F5F1EB;
+      padding: 0.7rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(26, 26, 26, 0.2);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(26, 26, 26, 0.3);
+      background: #000000;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .geometric-shape {
+      position: absolute;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      opacity: 0.03;
+      animation: morph 20s ease-in-out infinite;
+    }
+
+    .shape1 {
+      width: 600px;
+      height: 600px;
+      background: #D8C9A6;
+      top: -200px;
+      right: -200px;
+    }
+
+    .shape2 {
+      width: 400px;
+      height: 400px;
+      background: #1A1A1A;
+      bottom: -100px;
+      left: -100px;
+      animation-delay: 5s;
+    }
+
+    @keyframes morph {
+      0%, 100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg) scale(1);
+      }
+      25% {
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+        transform: rotate(90deg) scale(1.1);
+      }
+      50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+        transform: rotate(180deg) scale(0.9);
+      }
+      75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+        transform: rotate(270deg) scale(1.05);
+      }
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0 0 1.5rem 0;
+      color: #000000;
+      letter-spacing: -2px;
+    }
+
+    .hero-subheadline {
+      font-size: 1.3rem;
+      color: #4A4A4A;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: 600;
+      position: relative;
+    }
+
+
+
+    .btn-primary {
+      background: #1A1A1A;
+      color: #F5F1EB;
+      box-shadow: 0 4px 20px rgba(26, 26, 26, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 30px rgba(26, 26, 26, 0.4);
+      background: #000000;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #1A1A1A;
+      border: 2px solid #1A1A1A;
+    }
+
+    .btn-secondary:hover {
+      background: #1A1A1A;
+      color: #F5F1EB;
+      transform: translateY(-3px);
+    }
+
+    .hero-visual {
+      position: relative;
+      animation: fadeInUp 1s ease-out 0.3s backwards;
+    }
+
+    .hero-image-container {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #D8C9A6 0%, #1A1A1A 100%);
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-image-container:hover {
+      transform: scale(1.02) rotate(-1deg);
+    }
+
+    .hero-image-container::after {
+      content: '📱';
+      font-size: 6rem;
+      opacity: 0.3;
+    }
+
+    /* Services Preview */
+    .services-preview {
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #000000;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #4A4A4A;
+      margin-bottom: 4rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(216, 201, 166, 0.3);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .service-card:nth-child(1) { animation-delay: 0.1s; }
+    .service-card:nth-child(2) { animation-delay: 0.2s; }
+    .service-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .service-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .service-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 1rem;
+    }
+
+    .service-description {
+      color: #4A4A4A;
+      line-height: 1.7;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-link {
+      color: #1A1A1A;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s ease;
+    }
+
+    .service-link:hover {
+      gap: 1rem;
+    }
+
+    /* Why Choose Us */
+    .why-choose {
+      padding: 6rem 4rem;
+      background: rgba(216, 201, 166, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 2rem;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: scaleUp 0.6s ease-out forwards;
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card:nth-child(2) { animation-delay: 0.4s; }
+    .feature-card:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes scaleUp {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .feature-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-text {
+      color: #4A4A4A;
+      line-height: 1.6;
+    }
+
+    /* Portfolio */
+    .portfolio {
+      padding: 6rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .portfolio-carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .portfolio-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, #D8C9A6, #1A1A1A);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      opacity: 0.7;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 6rem 4rem;
+      background: rgba(245, 239, 231, 0.5);
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    .testimonial-stars {
+      color: #D8C9A6;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      color: #4A4A4A;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: #1A1A1A;
+    }
+
+    .testimonial-role {
+      color: #4A4A4A;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #1A1A1A;
+      color: #F5F1EB;
+      padding: 4rem 4rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-about h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #D8C9A6;
+    }
+
+    .footer-about p {
+      color: rgba(245, 241, 235, 0.7);
+      line-height: 1.7;
+    }
+
+    .footer-section h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: #F5F1EB;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: rgba(245, 241, 235, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #D8C9A6;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245, 241, 235, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(245, 241, 235, 0.5);
+    }
+
+    /* WhatsApp Float Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+      z-index: 999;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.15);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(10px);
+      }
+    }
+
+    .scroll-indicator span {
+      font-size: 0.9rem;
+      color: #4A4A4A;
+      font-weight: 500;
+    }
+
+    .scroll-arrow {
+      font-size: 1.5rem;
+    }
+
+    /* Page Navigation */
+    .page-content {
+      display: none;
+    }
+
+    .page-content.active {
+      display: block;
+      animation: pageTransition 0.6s ease-out;
+    }
+
+    @keyframes pageTransition {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Inner Page Styles */
+    .page-hero {
+      min-height: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10rem 4rem 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(216, 201, 166, 0.1) 0%, rgba(26, 26, 26, 0.05) 100%);
+      position: relative;
+    }
+
+    .page-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+    }
+
+    .page-hero p {
+      font-size: 1.3rem;
+      color: #4A4A4A;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content-section {
+      padding: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+
+    .content-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .content-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #1A1A1A;
+    }
+
+    .content-card p {
+      color: #4A4A4A;
+      line-height: 1.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .features-grid,
+      .portfolio-carousel,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 6rem 2rem 3rem;
+      }
+
+      .services-preview,
+      .why-choose,
+      .portfolio,
+      .testimonials {
+        padding: 4rem 2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-subheadline {
+        font-size: 1.1rem;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Prevent cursor styles on mobile */
+    @media (pointer: coarse) {
+      body {
+        cursor: auto;
+      }
+      
+      .custom-cursor,
+      .cursor-glow {
+        display: none;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+  <div class="cursor-glow"></div><!-- Particle Background -->
+  <div class="particle-container" id="particles"></div><!-- Navigation -->
+  <nav id="navbar">
+   <div class="nav-container"><a href="#" class="logo" data-page="home">Influence_Bazaar</a>
+    <ul class="nav-links">
+     <li><a href="#" data-page="home">Home</a></li>
+     <li><a href="#" data-page="influencer">Influencer Marketing</a></li>
+     <li><a href="#" data-page="website">Website Creation</a></li>
+     <li><a href="#" data-page="digital">Digital Marketing</a></li>
+     <li><a href="#" data-page="about">About</a></li>
+     <li><a href="#" data-page="contact">Contact</a></li>
+     <li><a href="https://forms.gle/QTu9ckS91CLr6f3MA" target="_blank" rel="noopener noreferrer" class="nav-cta">Book Free Call</a></li>
+    </ul>
+   </div>
+  </nav><!-- HOME PAGE -->
+  <div class="page-content active" id="home-page"><!-- Hero Section -->
+   <section class="hero">
+    <div class="geometric-shape shape1"></div>
+    <div class="geometric-shape shape2"></div>
+    <div class="hero-content">
+     <div class="hero-text">
+      <h1 id="hero-headline">Build Your Brand. Boost Your Influence.</h1>
+      <p class="hero-subheadline" id="hero-subheadline">Delhi's most result-driven agency for Influencer Marketing, Website Creation &amp; Digital Growth.</p>
+      <div class="cta-buttons"><a href="https://forms.gle/QTu9ckS91CLr6f3MA" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a Free Strategy Call</a> <a href="#" data-page="portfolio" class="btn btn-secondary">See Our Work</a>
+      </div>
+     </div>
+     <div class="hero-visual">
+      <div class="hero-image-container"></div>
+     </div>
+    </div>
+    <div class="scroll-indicator"><span>Scroll to explore</span>
+     <div class="scroll-arrow">
+      ↓
+     </div>
+    </div>
+   </section><!-- Services Preview -->
+   <section class="services-preview">
+    <div class="container">
+     <h2 class="section-title">Our Services</h2>
+     <p class="section-subtitle">Comprehensive digital solutions to elevate your brand</p>
+     <div class="services-grid">
+      <div class="service-card"><span class="service-icon">📱</span>
+       <h3 class="service-title">Influencer Marketing</h3>
+       <p class="service-description">Connect with top influencers and amplify your brand message to millions. ROI-focused campaigns that deliver real results.</p><a href="#" data-page="influencer" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card"><span class="service-icon">💻</span>
+       <h3 class="service-title">Website Creation</h3>
+       <p class="service-description">Stunning, high-converting websites delivered in 48 hours. Premium designs that captivate and convert your visitors.</p><a href="#" data-page="website" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card"><span class="service-icon">📊</span>
+       <h3 class="service-title">Digital Marketing</h3>
+       <p class="service-description">Complete social media growth and ad management. Data-driven strategies that scale your business exponentially.</p><a href="#" data-page="digital" class="service-link">Learn More →</a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Why Choose Us -->
+   <section class="why-choose">
+    <div class="container">
+     <h2 class="section-title">Why Choose Influence_Bazaar</h2>
+     <p class="section-subtitle">We don't just promise results—we deliver them</p>
+     <div class="features-grid">
+      <div class="feature-card"><span class="feature-icon">🎯</span>
+       <h3 class="feature-title">Result-Driven</h3>
+       <p class="feature-text">Every campaign is optimized for maximum ROI. We focus on metrics that matter to your business growth.</p>
+      </div>
+      <div class="feature-card"><span class="feature-icon">⚡</span>
+       <h3 class="feature-title">Lightning Fast</h3>
+       <p class="feature-text">Quick turnaround times without compromising quality. Get your projects delivered faster than industry standards.</p>
+      </div>
+      <div class="feature-card"><span class="feature-icon">🏆</span>
+       <h3 class="feature-title">Award-Winning Team</h3>
+       <p class="feature-text">Work with Delhi's best creative minds and marketing strategists who have delivered 500+ successful campaigns.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Portfolio -->
+   <section class="portfolio">
+    <div class="container">
+     <h2 class="section-title">Our Recent Work</h2>
+     <p class="section-subtitle">Projects that speak for themselves</p>
+     <div class="portfolio-carousel">
+      <div class="portfolio-item">
+       🎨
+      </div>
+      <div class="portfolio-item">
+       📸
+      </div>
+      <div class="portfolio-item">
+       🚀
+      </div>
+      <div class="portfolio-item">
+       💼
+      </div>
+      <div class="portfolio-item">
+       🎯
+      </div>
+      <div class="portfolio-item">
+       ✨
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials -->
+   <section class="testimonials">
+    <div class="container">
+     <h2 class="section-title">Client Success Stories</h2>
+     <p class="section-subtitle">Don't just take our word for it</p>
+     <div class="testimonials-grid">
+      <div class="testimonial-card">
+       <div class="testimonial-stars">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="testimonial-text">"Influence_Bazaar transformed our brand presence completely. Our influencer campaign reached 5M+ people and generated incredible ROI. Highly recommended!"</p>
+       <p class="testimonial-author">Rajesh Sharma</p>
+       <p class="testimonial-role">Founder, TechStartup Delhi</p>
+      </div>
+      <div class="testimonial-card">
+       <div class="testimonial-stars">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="testimonial-text">"Got our website in 48 hours as promised! The design is absolutely stunning and our conversions increased by 200%. Best investment we made."</p>
+       <p class="testimonial-author">Priya Malhotra</p>
+       <p class="testimonial-role">CEO, Fashion Brand</p>
+      </div>
+      <div class="testimonial-card">
+       <div class="testimonial-stars">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="testimonial-text">"Their digital marketing strategies are unmatched. We grew from 5k to 100k followers in 3 months. The team is professional and results-oriented."</p>
+       <p class="testimonial-author">Amit Kapoor</p>
+       <p class="testimonial-role">Director, Real Estate Firm</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- INFLUENCER MARKETING PAGE -->
+  <div class="page-content" id="influencer-page">
+   <section class="page-hero">
+    <div>
+     <h1>Influencer Marketing</h1>
+     <p>Connect with the right influencers and amplify your brand to millions</p>
+    </div>
+   </section>
+   <section class="content-section">
+    <div class="content-grid">
+     <div class="content-card">
+      <h3>🎯 Strategic Partnerships</h3>
+      <p>We connect you with influencers who align perfectly with your brand values and target audience. Our database includes 10,000+ verified influencers across all major platforms.</p>
+     </div>
+     <div class="content-card">
+      <h3>📊 ROI-Focused Campaigns</h3>
+      <p>Every campaign is designed with clear metrics and KPIs. We track engagement, reach, conversions, and provide detailed analytics to ensure maximum return on investment.</p>
+     </div>
+     <div class="content-card">
+      <h3>🎬 Content Creation</h3>
+      <p>From concept to execution, we handle all aspects of content creation. Our team works with influencers to create authentic, engaging content that resonates with audiences.</p>
+     </div>
+     <div class="content-card">
+      <h3>💼 Campaign Management</h3>
+      <p>End-to-end campaign management including influencer negotiation, content approval, posting schedules, and performance monitoring. You focus on your business, we handle everything else.</p>
+     </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;"><a href="https://forms.gle/QTu9ckS91CLr6f3MA" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Campaign Proposal</a>
+    </div>
+   </section>
+  </div><!-- WEBSITE CREATION PAGE -->
+  <div class="page-content" id="website-page">
+   <section class="page-hero">
+    <div>
+     <h1>Website Creation</h1>
+     <p>Premium websites that convert visitors into customers</p>
+    </div>
+   </section>
+   <section class="content-section">
+    <div class="content-grid">
+     <div class="content-card">
+      <h3>⚡ 48-Hour Delivery</h3>
+      <p>Need a website urgently? We deliver fully functional, beautifully designed websites in just 48 hours without compromising on quality or functionality.</p>
+     </div>
+     <div class="content-card">
+      <h3>🎨 Custom Design</h3>
+      <p>Every website is uniquely crafted to match your brand identity. No templates, no shortcuts—just pure creativity and professional design expertise.</p>
+     </div>
+     <div class="content-card">
+      <h3>📱 Mobile-First Approach</h3>
+      <p>All our websites are fully responsive and optimized for mobile devices. With 70% of users browsing on mobile, we ensure your site looks perfect everywhere.</p>
+     </div>
+     <div class="content-card">
+      <h3>🚀 Performance Optimized</h3>
+      <p>Lightning-fast loading speeds, SEO optimization, and clean code. Your website will rank higher on Google and provide an exceptional user experience.</p>
+     </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;"><a href="https://forms.gle/QTu9ckS91CLr6f3MA" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get Your Website in 48 Hours</a>
+    </div>
+   </section>
+  </div><!-- DIGITAL MARKETING PAGE -->
+  <div class="page-content" id="digital-page">
+   <section class="page-hero">
+    <div>
+     <h1>Digital Marketing</h1>
+     <p>Grow your social media presence and dominate your market</p>
+    </div>
+   </section>
+   <section class="content-section">
+    <div class="content-grid">
+     <div class="content-card">
+      <h3>📈 Social Media Growth</h3>
+      <p>Strategic content planning and posting that grows your followers organically. We create engaging content that builds a loyal community around your brand.</p>
+     </div>
+     <div class="content-card">
+      <h3>💰 Ad Campaign Management</h3>
+      <p>Expert management of Facebook, Instagram, and Google Ads. We optimize your ad spend to get maximum conversions at the lowest cost per acquisition.</p>
+     </div>
+     <div class="content-card">
+      <h3>📊 Analytics &amp; Reporting</h3>
+      <p>Comprehensive monthly reports with actionable insights. Track your growth, engagement rates, and ROI with our detailed analytics dashboard.</p>
+     </div>
+     <div class="content-card">
+      <h3>🎯 Targeted Campaigns</h3>
+      <p>Precision targeting to reach your ideal customers. We use advanced audience segmentation to ensure your message reaches the right people at the right time.</p>
+     </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;"><a href="https://forms.gle/QTu9ckS91CLr6f3MA" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Grow My Business</a>
+    </div>
+   </section>
+  </div><!-- ABOUT PAGE -->
+  <div class="page-content" id="about-page">
+   <section class="page-hero">
+    <div>
+     <h1>About Influence_Bazaar</h1>
+     <p>Delhi's premier digital marketing agency</p>
+    </div>
+   </section>
+   <section class="content-section">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+     <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Our Story</h2>
+     <p style="font-size: 1.2rem; line-height: 1.8; color: #4A4A4A; margin-bottom: 3rem;">Founded in the heart of Delhi, Influence_Bazaar was born from a simple vision: to help brands leverage the power of digital marketing and influencer partnerships to achieve extraordinary growth. What started as a small team of passionate marketers has grown into Delhi's most trusted digital agency, serving 500+ satisfied clients.</p>
+     <div style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin: 3rem 0;">
+      <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Our Mission</h3>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: #4A4A4A;">To empower businesses with cutting-edge digital marketing strategies that drive measurable results. We believe in transparency, creativity, and delivering value that exceeds expectations.</p>
+     </div>
+     <div style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+      <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Why Delhi Brands Trust Us</h3>
+      <p style="font-size: 1.1rem; line-height: 1.7; color: #4A4A4A;">We understand the local market dynamics, have established relationships with Delhi's top influencers, and deliver results that matter. Our track record speaks for itself: 95% client retention rate and 300% average ROI increase.</p>
+     </div>
+    </div>
+   </section>
+  </div><!-- CONTACT PAGE -->
+  <div class="page-content" id="contact-page">
+   <section class="page-hero">
+    <div>
+     <h1>Get In Touch</h1>
+     <p>Let's discuss how we can grow your business</p>
+    </div>
+   </section>
+   <section class="content-section">
+    <div class="content-grid">
+     <div>
+      <div class="content-card">
+       <h3>📍 Location</h3>
+       <p id="contact-address">Delhi, India<br>
+        28.6139° N, 77.2090° E</p>
+      </div>
+      <div class="content-card" style="margin-top: 2rem;">
+       <h3>📧 Email</h3>
+       <p id="contact-email">info@influencebazaar.com</p>
+      </div>
+      <div class="content-card" style="margin-top: 2rem;">
+       <h3>📱 Phone</h3>
+       <p id="contact-phone">+91 8076898936</p>
+      </div>
+      <div style="margin-top: 2rem;"><a href="https://wa.me/918076898936" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display: block; text-align: center;">WhatsApp Us</a>
+      </div>
+     </div>
+     <div class="content-card">
+      <h3>Quick Enquiry</h3>
+      <form id="contact-form" style="margin-top: 1.5rem;">
+       <div style="margin-bottom: 1.5rem;"><label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name</label> <input type="text" id="name" required style="width: 100%; padding: 0.8rem; border: 2px solid #F5F1EB; border-radius: 10px; font-size: 1rem;">
+       </div>
+       <div style="margin-bottom: 1.5rem;"><label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label> <input type="email" id="email" required style="width: 100%; padding: 0.8rem; border: 2px solid #F5F1EB; border-radius: 10px; font-size: 1rem;">
+       </div>
+       <div style="margin-bottom: 1.5rem;"><label for="service" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Service Interested In</label> <select id="service" required style="width: 100%; padding: 0.8rem; border: 2px solid #F5F1EB; border-radius: 10px; font-size: 1rem;"> <option value="">Select a service</option> <option value="influencer">Influencer Marketing</option> <option value="website">Website Creation</option> <option value="digital">Digital Marketing</option> <option value="all">All Services</option> </select>
+       </div>
+       <div style="margin-bottom: 1.5rem;"><label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label> <textarea id="message" rows="4" required style="width: 100%; padding: 0.8rem; border: 2px solid #F5F1EB; border-radius: 10px; font-size: 1rem; resize: vertical;"></textarea>
+       </div><button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+      </form>
+     </div>
+    </div>
+    <div class="content-card" style="margin-top: 3rem; text-align: center;">
+     <h3 style="margin-bottom: 2rem;">Find Us in Delhi</h3>
+     <div style="background: linear-gradient(135deg, #D8C9A6, #1A1A1A); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+      🗺️
+     </div>
+     <p style="margin-top: 1rem; color: #4A4A4A;">📍 Delhi, India (28.6139° N, 77.2090° E)</p>
+    </div>
+    <div class="content-card" style="margin-top: 3rem;">
+     <h3 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h3>
+     <div style="max-width: 800px; margin: 0 auto;">
+      <div style="margin-bottom: 2rem;">
+       <h4 style="color: #1A1A1A; margin-bottom: 0.5rem;">How quickly can you start my project?</h4>
+       <p style="color: #4A4A4A; line-height: 1.7;">We can start immediately! For websites, we deliver in 48 hours. For influencer and digital marketing campaigns, we begin strategy development within 24 hours of booking.</p>
+      </div>
+      <div style="margin-bottom: 2rem;">
+       <h4 style="color: #1A1A1A; margin-bottom: 0.5rem;">What are your pricing packages?</h4>
+       <p style="color: #4A4A4A; line-height: 1.7;">Our pricing varies based on project scope and requirements. Book a free strategy call to get a customized quote tailored to your needs and budget.</p>
+      </div>
+      <div style="margin-bottom: 2rem;">
+       <h4 style="color: #1A1A1A; margin-bottom: 0.5rem;">Do you work with businesses outside Delhi?</h4>
+       <p style="color: #4A4A4A; line-height: 1.7;">Absolutely! While we're based in Delhi, we work with clients across India and internationally. All services are available remotely with full support.</p>
+      </div>
+      <div>
+       <h4 style="color: #1A1A1A; margin-bottom: 0.5rem;">What makes Influence_Bazaar different?</h4>
+       <p style="color: #4A4A4A; line-height: 1.7;">Our unique combination of speed, quality, and results. We deliver faster than competitors without compromising quality, and every project is backed by data-driven strategies that guarantee ROI.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- Footer -->
+  <footer>
+   <div class="footer-content">
+    <div class="footer-about">
+     <h3>Influence_Bazaar</h3>
+     <p>Delhi's premier digital marketing agency specializing in influencer marketing, website creation, and social media growth. Let's build your brand together.</p>
+    </div>
+    <div class="footer-section">
+     <h4>Services</h4>
+     <ul class="footer-links">
+      <li><a href="#" data-page="influencer">Influencer Marketing</a></li>
+      <li><a href="#" data-page="website">Website Creation</a></li>
+      <li><a href="#" data-page="digital">Digital Marketing</a></li>
+     </ul>
+    </div>
+    <div class="footer-section">
+     <h4>Company</h4>
+     <ul class="footer-links">
+      <li><a href="#" data-page="about">About Us</a></li>
+      <li><a href="#" data-page="contact">Contact</a></li>
+      <li><a href="https://forms.gle/QTu9ckS91CLr6f3MA" target="_blank" rel="noopener noreferrer">Book Free Call</a></li>
+     </ul>
+    </div>
+    <div class="footer-section">
+     <h4>Connect</h4>
+     <ul class="footer-links">
+      <li><a href="https://wa.me/918076898936" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+      <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+      <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+     </ul>
+    </div>
+   </div>
+   <div class="footer-bottom">
+    <p>© 2024 Influence_Bazaar. All rights reserved. | Crafted with ❤️ in Delhi</p>
+   </div>
+  </footer><!-- WhatsApp Float Button --> <a href="https://wa.me/918076898936" target="_blank" rel="noopener noreferrer" class="whatsapp-float"> 💬 </a>
+  <script>
+    const defaultConfig = {
+      hero_headline: "Build Your Brand. Boost Your Influence.",
+      hero_subheadline: "Delhi's most result-driven agency for Influencer Marketing, Website Creation & Digital Growth.",
+      contact_email: "info@influencebazaar.com",
+      contact_phone: "+91 8076898936",
+      contact_address: "Delhi, India\n28.6139° N, 77.2090° E",
+      background_color: "#F5EFE7",
+      primary_color: "#1A1A1A",
+      accent_color: "#D8C9A6",
+      text_color: "#000000",
+      secondary_text_color: "#4A4A4A",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const heroHeadline = document.getElementById('hero-headline');
+      const heroSubheadline = document.getElementById('hero-subheadline');
+      const contactEmail = document.getElementById('contact-email');
+      const contactPhone = document.getElementById('contact-phone');
+      const contactAddress = document.getElementById('contact-address');
+
+      if (heroHeadline) heroHeadline.textContent = config.hero_headline || defaultConfig.hero_headline;
+      if (heroSubheadline) heroSubheadline.textContent = config.hero_subheadline || defaultConfig.hero_subheadline;
+      if (contactEmail) contactEmail.textContent = config.contact_email || defaultConfig.contact_email;
+      if (contactPhone) contactPhone.textContent = config.contact_phone || defaultConfig.contact_phone;
+      if (contactAddress) contactAddress.textContent = config.contact_address || defaultConfig.contact_address;
+
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryTextColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+
+      document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #F5F1EB 100%)`;
+      
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
+      const fontFamily = `${customFont}, ${baseFontStack}`;
+      document.body.style.fontFamily = fontFamily;
+
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${baseSize}px`;
+
+      const heroH1 = document.querySelector('.hero h1');
+      if (heroH1) heroH1.style.fontSize = `${baseSize * 2.5}px`;
+
+      const sectionTitles = document.querySelectorAll('.section-title');
+      sectionTitles.forEach(title => {
+        title.style.fontSize = `${baseSize * 1.9}px`;
+        title.style.color = textColor;
+      });
+
+      const sectionSubtitles = document.querySelectorAll('.section-subtitle, .hero-subheadline');
+      sectionSubtitles.forEach(subtitle => {
+        subtitle.style.fontSize = `${baseSize * 1.1}px`;
+        subtitle.style.color = secondaryTextColor;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          },
+          {
+            get: () => config.secondary_text_color || defaultConfig.secondary_text_color,
+            set: (value) => {
+              config.secondary_text_color = value;
+              if (window.elementSdk) {
+                window.elementSdk.setConfig({ secondary_text_color: value });
+              }
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            if (window.elementSdk) {
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["hero_headline", config.hero_headline || defaultConfig.hero_headline],
+        ["hero_subheadline", config.hero_subheadline || defaultConfig.hero_subheadline],
+        ["contact_email", config.contact_email || defaultConfig.contact_email],
+        ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
+        ["contact_address", config.contact_address || defaultConfig.contact_address]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Custom Cursor
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorGlow = document.querySelector('.cursor-glow');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    // Particles
+    const particleContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      particle.style.animationDelay = Math.random() * 5 + 's';
+      particleContainer.appendChild(particle);
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Page Navigation
+    const pages = {
+      home: document.getElementById('home-page'),
+      influencer: document.getElementById('influencer-page'),
+      website: document.getElementById('website-page'),
+      digital: document.getElementById('digital-page'),
+      about: document.getElementById('about-page'),
+      contact: document.getElementById('contact-page')
+    };
+
+    function showPage(pageName) {
+      Object.values(pages).forEach(page => page.classList.remove('active'));
+      if (pages[pageName]) {
+        pages[pageName].classList.add('active');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageName = link.getAttribute('data-page');
+        showPage(pageName);
+      });
+    });
+
+    // Contact Form
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Sending...';
+        submitButton.disabled = true;
+
+        setTimeout(() => {
+          const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            service: document.getElementById('service').value,
+            message: document.getElementById('message').value
+          };
+
+          const successMessage = document.createElement('div');
+          successMessage.style.cssText = 'background: #25D366; color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem; text-align: center; font-weight: 600;';
+          successMessage.textContent = '✓ Message sent! We\'ll get back to you within 24 hours.';
+          
+          contactForm.appendChild(successMessage);
+          contactForm.reset();
+
+          setTimeout(() => {
+            successMessage.remove();
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+          }, 3000);
+        }, 1000);
+      });
+    }
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .feature-card, .portfolio-item, .testimonial-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a32d7bb445fda6d',t:'MTc2MzkyMzcyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
